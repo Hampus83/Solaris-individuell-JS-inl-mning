@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Secular+One&display=swap');
+
+/* font-family: 'Lora', serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Secular One', sans-serif; */
+
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+body {
+    background: linear-gradient(269.84deg, #0C164D 0.11%, #190B22 99.83%);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.header {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    right: 2rem;
+    top: 2rem;
+}
+
+.header h1 {
+    font-size: 60px;
+    line-height: 100%;
+    letter-spacing: 0.09em;
+    font-weight: 400;
+    color: #ffffff;
+    font-family: 'Secular One', sans-serif;
+    margin: 0;
+}
+
+.header h2 {
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0.6em;
+    font-weight: 400;
+    color: #FFD029;
+    text-align: end;
+    font-family: 'Lora', serif;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.planets-container {
+    width: 100%;
+    margin: 0 5rem 0 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.planet {
+    border-radius: 9999px;
+    transition: all 0.3s;
+}
+
+.planet:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+    box-shadow: 0 0 8px 12px;
+}
+
+[planet-name="Solen"] {
+    background-color: #FFD029;
+    position: absolute;
+    right: 95%;
+    width: 1278px;
+    height: 1278px;
+}
+[planet-name="Solen"]:hover {
+    background-color: #c7a013;
+    transform: scale(1.05);
+}
+
+[planet-name="Merkurius"] {
+    background-color: #888888;
+    width: 14px;
+    height: 14px;
+}
+
+[planet-name="Merkurius"]:hover {
+    background-color: #6d6d6d;
+}
+
+[planet-name="Venus"] {
+    background-color: #E7CDCD;
+    width: 26px;
+    height: 26px;
+}
+
+[planet-name="Venus"]:hover {
+    background-color: #b99e9e;
+}
+
+[planet-name="Jorden"] {
+    background-color: #428ED4;
+    width: 28px;
+    height: 28px;
+}
+
+[planet-name="Jorden"]:hover {
+    background-color: #2f6597;
+}
+
+[planet-name="Mars"] {
+    background-color: #EF5F5F;
+    width: 14px;
+    height: 14px;
+}
+[planet-name="Mars"]:hover {
+    background-color: #c25050;
+}
+
+[planet-name="Jupiter"] {
+    background-color: #E29468;
+    width: 188px;
+    height: 188px;
+}
+
+[planet-name="Jupiter"]:hover {
+    background-color: #c07f5a;
+}
+
+[planet-name="Saturnus"] {
+    position: relative;
+    background-color: #C7AA72;
+    width: 144px;
+    height: 144px;
+}
+
+[planet-name="Saturnus"]::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 130%;
+    height: 5%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: rotateZ(-25deg);
+    top: 50%;
+    left: -12%;
+}
+
+[planet-name="Saturnus"]:hover {
+    background-color: #a18a5b;
+}
+
+[planet-name="Uranus"] {
+    background-color: #C9D4F1;
+    width: 66px;
+    height: 66px;
+}
+
+[planet-name="Uranus"]:hover {
+    background-color: #9ca4b8;
+}
+
+[planet-name="Neptunus"] {
+    background-color: #7A91A7;
+    width: 66px;
+    height: 66px;
+}
+
+[planet-name="Neptunus"]:hover {
+    background-color: #627586;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1;
+    background: linear-gradient(269.84deg, #0C164D 0.11%, #190B22 99.83%);
+    overflow: scroll;
+}
+
+.close {
+    color: white;
+    position: fixed;
+    top: 10px;
+    right: 45px;
+    font-size: 55px;
+    font-weight: 300;
+    z-index: 2;
+}
+
+.close:hover,
+.close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.overlay-content {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    position: relative;
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-template-areas: 
+    "planet title title title"
+    "planet first-break-line first-break-line first-break-line"
+    "planet stats-left stats-right stats-right"
+    "planet second-break-line second-break-line second-break-line"
+    "planet the-moons the-moons the-moons"
+    ;
+}
+
+.planet-background {
+    z-index: 5;
+    grid-area: planet;
+    width: 1278px;
+    height: 1278px;
+    background-color: #428ED4;
+    border-radius: 9999px;
+    position: absolute;
+    top: -49%;
+    right: 140%;
+    box-shadow: 0 0 80px 12px;
+}
+
+.title {
+    grid-area: title;
+}
+
+.title .swedish-title {
+    margin-top: 3rem;
+    margin-bottom: 0;
+    font-family: 'Secular One', sans-serif;
+    font-size: 60px;
+    letter-spacing: 0.09em;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.title .latin-title {
+    color: #FFD029;
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+}
+
+.title .info-text {
+    font-size: 18px;
+    line-height: 170%;
+    font-weight: 300;
+    margin-top: 2rem;
+}
+
+.info-header {
+    font-family: 'Secular One', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.09em;
+}
+
+.stats-left {
+    grid-area: stats-left;
+}
+
+.stats-right {
+    grid-area: stats-right;
+}
+
+.the-moons {
+    grid-area: the-moons;
+}
+
+.info-header {
+    margin: 2rem 0 0 0;
+}
+
+.stats {
+    font-size: 18px;
+    line-height: 170%;
+    letter-spacing: 0.16em;
+    color: grey;
+    margin: 0;
+}
+
+.first-break-line {
+    grid-area: first-break-line;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.second-break-line {
+    grid-area: second-break-line;
+    margin-top: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.show {
+    display: block;
+}
